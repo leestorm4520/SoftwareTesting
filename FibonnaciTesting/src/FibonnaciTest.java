@@ -1,3 +1,7 @@
+import org.junit.Test;
+import org.junit.BeforeClass;
+import static org.junit.Assert.*;
+
 
 public class FibonacciTest extends TestCase {
 	/*
@@ -37,6 +41,25 @@ public class FibonacciTest extends TestCase {
 	 *  }
 	 *  
 	 */
-	
-	protected Fibonacci fTest;
+	public static void main(String args[]) {
+		protected Fibonacci fTest;
+	    protected static int groudtruth[] = {0, 1,...,12586269025};
+	    public void setUp(){
+	        fTest = new Fibonacci();
+	    }
+	    @Test
+	    public testInitialize(){
+	        assertEquals(“Length of fTest after initialization”, 0, fTest.getLength());
+	    }
+	    @Test
+	    public testExtend(){
+	        fTest.extend(50);
+	        assertEquals(“…”, 50, fTest.getLength());
+	    }
+	    @Test
+	    public testGet(){
+	        fTest.extend(50);
+	        assertEquals(“…”, groudtruth[49], fTest.get(50));
+	    }
+
 }
