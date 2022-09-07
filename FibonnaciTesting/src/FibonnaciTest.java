@@ -39,6 +39,13 @@ public class FibonacciTest extends TestCase {
 	 *  	File b=open('bar');
 	 *  
 	 *  }
+	 *  Difficulty:
+	 *  	Complex Structure
+	 *  	System Calls
+	 *  	Databases
+	 *  	File Systems
+	 *  	Network
+	 *  ==> Maintenance during setUp and tearDown
 	 *  
 	 */
 	public static void main(String args[]) {
@@ -62,4 +69,5 @@ public class FibonacciTest extends TestCase {
 	        assertEquals(“…”, groudtruth[49], fTest.get(50));
 	    }
 
+	}
 }
