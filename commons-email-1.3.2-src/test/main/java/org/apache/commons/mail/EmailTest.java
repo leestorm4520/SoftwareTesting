@@ -15,5 +15,8 @@ public class EmailTest extends TestCase{
 		testEmail.addBcc("a@b.com");
 		assertEquals("a@b.com", testEmail.getBccAddresses().get(0).toString());
 	}
+	public void testAddBccWithCharSet() throws EmailException{
+		testEmail.addBcc)
+	}
 
 }

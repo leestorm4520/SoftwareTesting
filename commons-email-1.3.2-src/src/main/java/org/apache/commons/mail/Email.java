@@ -894,6 +894,7 @@ public abstract class Email
      * @throws EmailException Indicates an invalid email address.
      * @since 1.3
      */
+    // ... means zero or more String objects (or a single array of them) maybe passed as the arguments for that method
     public Email addCc(String... emails)
         throws EmailException
     {
