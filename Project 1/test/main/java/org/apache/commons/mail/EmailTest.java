@@ -19,6 +19,7 @@ public class EmailTest extends TestCase{
 	/*
 	 * getBccAddress return bccList (ArrayList of InternetAddress) - for addBcc(String... email){}
 	 * buildMimeMessage
+	 * getBccAddresses/getCCAddresses ->bbcList/ccList -> createInternetAddress ->InternetAddress(email).setPersonal(name) or InternetAddress(email).setPersonal(name, Charset.forname(charsetName))
 	 *
 	 */
 	public void testAddBccWithCharSet() throws EmailException{
