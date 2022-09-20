@@ -32,4 +32,18 @@ public class EmailTest extends TestCase{
 		testEmail.addCc("a@b.com");
 		assertEquals("a@b.com", testEmail.getCcAddresses().get(0).toString());
 	}
+	/*
+	 * X-Mailer: Sendmail, X-Priority: 1( highest )
+     * or  2( high ) 3( normal ) 4( low ) and 5( lowest )
+     * Disposition-Notification-To: user@domain.net
+     * String Name - String Value
+	 */
+	public void testAddHeader() throws EmailException{
+		testEmail.addHeader("John", "1");
+		assertEquals("{John=1}", testEmail.headers.toString());
+	}
+	public void testAddReplyTo() throws EmailException{
+		testEmail.addReplyTo("a@b.com");
+		assertEquals("a@b.com", testEmail.getReplyToAddresses().get(0).toString());
+	}
 }

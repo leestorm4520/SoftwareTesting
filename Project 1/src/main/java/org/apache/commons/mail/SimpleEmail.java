@@ -36,7 +36,7 @@ public class SimpleEmail extends Email
      */
     @Override
     public Email setMsg(String msg) throws EmailException
-    {
+    {h
         if (EmailUtils.isEmpty(msg))
         {
             throw new EmailException("Invalid message supplied");
