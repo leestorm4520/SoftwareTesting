@@ -65,9 +65,16 @@ public class EmailTest extends TestCase{
 	}
 	
 	public void testUpdateContentTypeWithoutCharSet() throws EmailException{
+		testEmail.setCharset("utf-8");
 		testEmail.updateContentType("text/plain");
-		assertEquals("text/plain", testEmail.contentType);
+		assertEquals("text/plain; charset=UTF-8", testEmail.contentType);
 	}
+	
+//	public void testUpdateContentTypeWithEmptyCharSet() throws EmailException{
+//		testEmail.updateContentType("text/plain; charset");
+//	}
+	
+//	public void testUpdateContentTypeWithEmp
 	
 	public void testSend() throws EmailException{
 		testEmail.setHostName("b.com");
