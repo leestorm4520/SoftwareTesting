@@ -4,6 +4,7 @@ package org.apache.commons.mail;
 public class EmailMock extends Email{
 	private String sent;
 	
+	
 	@Override
 	public Email setMsg(String msg) throws EmailException{
 		if(EmailUtils.isEmpty(msg)) {
@@ -32,5 +33,7 @@ public class EmailMock extends Email{
 	public String getCharset() {
 		return charset;
 	}
+	
+	
 	
 }

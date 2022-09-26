@@ -1,5 +1,9 @@
 package org.apache.commons.mail;
 
+import java.util.Properties;
+
+import javax.mail.Session;
+
 import org.apache.commons.mail.Email;
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.SimpleEmail;
@@ -68,6 +72,15 @@ public class EmailTest extends TestCase{
 		testEmail.setCharset("utf-8");
 		testEmail.updateContentType("text/plain");
 		assertEquals("text/plain; charset=UTF-8", testEmail.contentType);
+	}
+	
+	public void testGetHostName() throws EmailException{
+//		Properties props = System.getProperties();
+//		props.put(EmailConstants.MAIL_HOST, 3000);
+//		Session session = Session.getDefaultInstance(props, null);
+//		testEmail.setMailSession(session);
+		testEmail.setHostName("A Host");
+		assertEquals("A Host", testEmail.getHostName().toString());
 	}
 	
 //	public void testUpdateContentTypeWithEmptyCharSet() throws EmailException{
