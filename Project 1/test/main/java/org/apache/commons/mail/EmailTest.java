@@ -85,6 +85,25 @@ public class EmailTest extends TestCase{
 		assertEquals("a subject", testEmail.getSent());
 	}
 	
+	/*
+	 * BuildMimeMessage
+	 * -A MimeMessage includes: host, from, toList, ccList, bccList, replyList, headers, subject, content, emailbody, 
+	 */
+	
+	public void testBuildMimeMessageWithAllComponents() throws EmailException{
+		testEmail.setHostName("b.com");
+		testEmail.setFrom("a@b.com");
+		testEmail.addTo("c@b.com");
+		testEmail.setSubject("a subject");
+		testEmail.updateContentType("test/plain; charset=utf-8");
+		
+		testEmail.addCc("d@b.com");
+		testEmail.addBcc("e@b.com");
+		testEmail.addReplyTo("f@b.com");
+		testEmail.addHeader("Testing case", "1");
+		testEmail.buildMimeMessage();
+	}
+	
 	public void testBuildMimeMessageNoHost() throws EmailException{
 		try {
 			testEmail.buildMimeMessage(); fail("Should throw EmailException");
@@ -114,6 +133,8 @@ public class EmailTest extends TestCase{
 			assertEquals("At least one receiver address required", e.getMessage());
 		}
 	}
+	
+	
 	
 	public void testBuildMimeMessageExisting() throws EmailException{
 		testEmail.setHostName("b.com");
