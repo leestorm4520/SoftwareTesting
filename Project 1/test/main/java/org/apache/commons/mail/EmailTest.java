@@ -54,14 +54,19 @@ public class EmailTest extends TestCase{
 		testEmail.addReplyTo("a@b.com", "John", "UTF-16");
 		assertEquals("John <a@b.com>", testEmail.getReplyToAddresses().get(0).toString());
 	}
+	
+	public void testUpdateContentNull() throws EmailException{
+		testEmail.updateContentType("");
+		assertEquals(null, testEmail.contentType);
+	}
+	public void testUpdateContentTypeWithCharSet() throws EmailException{
+		testEmail.updateContentType("text/plain; charset=UTF-8");
+		assertEquals("text/plain; charset=UTF-8", testEmail.contentType);
+	}
+	
 	public void testUpdateContentTypeWithoutCharSet() throws EmailException{
 		testEmail.updateContentType("text/plain");
 		assertEquals("text/plain", testEmail.contentType);
-	}
-	public void testUpdateContentTypeWithCharSet() throws EmailException{
-		testEmail.updateContentType("text/plain");
-		testEmail.setCharset("UTF-8");
-		assertEquals("text/plain UTF-8", testEmail.contentType);
 	}
 	
 	
