@@ -32,6 +32,10 @@ public class EmailTest extends TestCase{
 		testEmail.addCc("a@b.com");
 		assertEquals("a@b.com", testEmail.getCcAddresses().get(0).toString());
 	}
+	public void testAddCCWithCharSet() throws EmailException{
+		testEmail.addCc("a@b.com", "John", "UTF-16");
+		assertEquals("John <a@b.com>", testEmail.getCcAddresses().get(0).toString());
+	}
 	/*
 	 * X-Mailer: Sendmail, X-Priority: 1( highest )
      * or  2( high ) 3( normal ) 4( low ) and 5( lowest )
@@ -46,4 +50,22 @@ public class EmailTest extends TestCase{
 		testEmail.addReplyTo("a@b.com");
 		assertEquals("a@b.com", testEmail.getReplyToAddresses().get(0).toString());
 	}
+	public void testAddReplyWithCharSet() throws EmailException{
+		testEmail.addReplyTo("a@b.com", "John", "UTF-16");
+		assertEquals("John <a@b.com>", testEmail.getReplyToAddresses().get(0).toString());
+	}
+	public void testUpdateContentTypeWithoutCharSet() throws EmailException{
+		testEmail.updateContentType("text/plain");
+		assertEquals("text/plain", testEmail.contentType);
+	}
+	public void testUpdateContentTypeWithCharSet() throws EmailException{
+		testEmail.updateContentType("text/plain");
+		testEmail.setCharset("UTF-8");
+		assertEquals("text/plain UTF-8", testEmail.contentType);
+	}
+	
+	
+	
+	
+	
 }
