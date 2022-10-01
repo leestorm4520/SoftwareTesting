@@ -83,12 +83,20 @@ public class EmailTest extends TestCase{
 		assertEquals("A Host", testEmail.getHostName().toString());
 	}
 	
+//	public void testGetHostNameWithNullSession() throws EmailException{
+//		testEmail.setMailSession(;)
+//		assertEquals(null, testEmail.getHostName().toString());
+//	}
+//	
 //	public void testUpdateContentTypeWithEmptyCharSet() throws EmailException{
 //		testEmail.updateContentType("text/plain; charset");
 //	}
 	
-//	public void testUpdateContentTypeWithEmp
-	
+	public void testGetMailSessionWithSSL() throws EmailException{
+		testEmail.setSSLOnConnect(true);
+		Session session=testEmail.getMailSession();
+		System.out.println(session.toString());
+	}
 	public void testSend() throws EmailException{
 		testEmail.setHostName("b.com");
 		testEmail.setFrom("a@b.com");
