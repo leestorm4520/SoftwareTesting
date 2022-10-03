@@ -94,6 +94,7 @@ public class EmailTest extends TestCase{
 	
 	public void testGetMailSessionWithSSL() throws EmailException{
 		testEmail.setSSLOnConnect(true);
+		testEmail.setHostName("Host A");
 		Session session=testEmail.getMailSession();
 		System.out.println(session.toString());
 	}
