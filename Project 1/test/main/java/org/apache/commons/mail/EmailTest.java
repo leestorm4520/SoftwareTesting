@@ -1,7 +1,7 @@
 package org.apache.commons.mail;
 
 import java.util.Properties;
-
+import java.util.Date;
 import javax.mail.Session;
 
 import org.apache.commons.mail.Email;
@@ -96,8 +96,17 @@ public class EmailTest extends TestCase{
 		testEmail.setSSLOnConnect(true);
 		testEmail.setHostName("Host A");
 		Session session=testEmail.getMailSession();
-		System.out.println(session.toString());
+		System.out.println("Current session is" + session.toString());
 	}
+	
+	public void testGetSentDate() throws EmailException{
+		Date dateSent=new Date();
+		testEmail.setSentDate(dateSent);
+//		System.out.println(dateSent.toString());
+//		System.out.println(testEmail.getSentDate().toString());
+		assertEquals(dateSent.toString(), testEmail.getSentDate().toString());
+	}
+	
 	public void testSend() throws EmailException{
 		testEmail.setHostName("b.com");
 		testEmail.setFrom("a@b.com");
