@@ -83,11 +83,13 @@ public class EmailTest extends TestCase{
 		assertEquals("A Host", testEmail.getHostName().toString());
 	}
 	
-//	public void testGetHostNameWithNullSession() throws EmailException{
-//		testEmail.setMailSession(;)
-//		assertEquals(null, testEmail.getHostName().toString());
-//	}
-//	
+	public void testGetHostNameWithSession() throws EmailException{
+		testEmail.setHostName("b.com");
+		Session session=testEmail.getMailSession();
+//		System.out.println(testEmail.getMailSession());
+		assertEquals("b.com", testEmail.getHostName().toString());
+	}
+	
 //	public void testUpdateContentTypeWithEmptyCharSet() throws EmailException{
 //		testEmail.updateContentType("text/plain; charset");
 //	}
@@ -96,7 +98,7 @@ public class EmailTest extends TestCase{
 		testEmail.setSSLOnConnect(true);
 		testEmail.setHostName("Host A");
 		Session session=testEmail.getMailSession();
-		System.out.println("Current session is" + session.toString());
+//		System.out.println("Current session is " + session.toString());
 	}
 	
 	public void testGetSentDate() throws EmailException{
@@ -105,6 +107,11 @@ public class EmailTest extends TestCase{
 //		System.out.println(dateSent.toString());
 //		System.out.println(testEmail.getSentDate().toString());
 		assertEquals(dateSent.toString(), testEmail.getSentDate().toString());
+	}
+	
+	public void testGetSocketConnectionTimeout() throws EmailException{
+		testEmail.setSocketConnectionTimeout(60);
+		assertEquals(60, testEmail.getSocketConnectionTimeout());
 	}
 	
 	public void testSend() throws EmailException{
@@ -116,6 +123,11 @@ public class EmailTest extends TestCase{
 		assertEquals("a subject", testEmail.getSent());
 	}
 	
+	//setFrom was already tested 100% in testSend() but redo it for test purpose
+	public void testSetFrom() throws EmailException{
+		testEmail.setFrom("a@b.com");
+		assertEquals("a@b.com", testEmail.getFromAddress().toString());
+	}
 	/*
 	 * BuildMimeMessage
 	 * -A MimeMessage includes: host, from, toList, ccList, bccList, replyList, headers, subject, content, emailbody, 
