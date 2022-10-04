@@ -43,6 +43,7 @@ public class EmailTest extends TestCase{
 	
 	/* Email addBcc(String ... emails) - An array of emails */
 	public void testAddBccWithArrayOfEmails() throws EmailException{
+		// create an array of email string
 		String[] emails= new String[] {"a@b.com", "c@b.com", "d@b.com"}; 
 		testEmail.addBcc(emails);
 		assertEquals("d@b.com", testEmail.getBccAddresses().get(2).toString());
@@ -58,6 +59,7 @@ public class EmailTest extends TestCase{
 			assertEquals("Address List provided was invalid", e.getMessage());
 		}
 	}
+	
 	/////////////////////////////////////////////////
 	
 	/* addCc - coverage: 100% */
@@ -134,7 +136,7 @@ public class EmailTest extends TestCase{
 	/////////////////////////////////////////////////
 
 	/*
-	 * buildMimeMessage - coverage: 73.8%
+	 * buildMimeMessage - coverage: 79.2%
 	 * -A MimeMessage includes: host, from, toList, ccList, bccList, replyList, headers, subject, content, emailbody, 
 	 */
 	
@@ -250,6 +252,7 @@ public class EmailTest extends TestCase{
 	
 	/* Date getSentDate() */
 	public void testGetSentDate() throws EmailException{
+		// create a Date object with no argument - access the recent system date
 		Date dateSent=new Date();
 		testEmail.setSentDate(dateSent);
 		assertEquals(dateSent.toString(), testEmail.getSentDate().toString());
@@ -261,6 +264,7 @@ public class EmailTest extends TestCase{
 	
 	/* int getSocketConnectionTimeout() */
 	public void testGetSocketConnectionTimeout() throws EmailException{
+		// default timeout is 60s
 		testEmail.setSocketConnectionTimeout(60);
 		assertEquals(60, testEmail.getSocketConnectionTimeout());
 	}

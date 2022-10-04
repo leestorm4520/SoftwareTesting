@@ -1,9 +1,11 @@
 package org.apache.commons.mail;
 
+/*
+ * EmailMock Class - public class to access private variables and methods from abstract class - Email
+ */
 //send email message without attachments
 public class EmailMock extends Email{
 	private String sent;
-	
 	
 	@Override
 	public Email setMsg(String msg) throws EmailException{
